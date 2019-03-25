@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <div class="box animated flash"></div>
     <h1>{{ msg }}</h1>
     <el-row>
     <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
@@ -42,6 +43,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.box{height: 100px;width: 100px;background-color: lightblue}
 h3 {
   margin: 40px 0 0;
 }
