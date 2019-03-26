@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Login from '@/pages/login'
+import Home from '@/pages/home'
 
 Vue.use(Router)
 
@@ -14,6 +15,11 @@ export const constantRouterMap = [{
             title: '登录'
         }
     },
+    {
+        path:'/',
+        name:'home',
+        component:Home,
+    }
     // {
     //     path: '/',
     //     hidden: true,
