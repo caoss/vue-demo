@@ -1,7 +1,6 @@
 <template>
     <el-container class="login-container">
-        <el-switch v-model="toggleParticles" inactive-color="#ff4949">
-            ></el-switch>
+        <el-switch v-model="toggleParticles" inactive-color="#ff4949">></el-switch>
         <el-button class="show-account" type="text" @click="accountTip">提示帐号信息</el-button>
         <el-card class="animated flipInY">
             <div slot="header" class="el-card-header">
@@ -48,7 +47,7 @@
     export default {
         data() {
             // username 验证
-            const validateUsername = (rule, value, callback) => {
+            const validateUsername = (rule, value, callback) => {//elementUI- async-validator。验证规则
                 if (!isValidUsername(value)) {
                     callback(new Error('请输入正确的用户名'))
                 } else {
@@ -72,14 +71,19 @@
                 },
                 remember: false,
                 loading: false,
+
+
+                // rules: {
+                //     name: [
+                //         { required: true, message: '请输入活动名称', trigger: 'blur' },
+                //         { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                //     ],
+                // }
+
                 rules: {
                     username: [{
                             required: true,
                             message: '请输入账号',
-                            trigger: 'blur'
-                        },
-                        {
-                            required: true,
                             trigger: 'blur',
                             validator: validateUsername
                         },
@@ -119,6 +123,7 @@
             }
         },
         methods: {
+            //在组件中分发 Action
             ...mapActions([
                 'login'
             ]),
