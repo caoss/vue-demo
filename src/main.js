@@ -7,7 +7,8 @@ import router from './router';
 import './icons';
 // 国际化
 import i18n from './lang';
-import store from './store'
+import store from './store';
+import 'normalize.css/normalize.css';
 
 Vue.use(ElementUI);
 

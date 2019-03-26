@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.6.3",
     "js-cookie": "^2.2.0",
+    "normalize.css": "^8.0.1",
     "particles.js": "^2.0.0",
     "screenfull": "^4.1.0",
     "stylus": "^0.54.5",
