@@ -291,7 +291,7 @@
                 }
             }
         },
-        mounted() {
+        mounted() {//组件生命周期函数
             this.accountTip()
         }
     }

@@ -6,7 +6,8 @@ import App from './App.vue';
 import router from './router';
 import './icons';
 // 国际化
-import i18n from './lang'
+import i18n from './lang';
+import store from './store'
 
 Vue.use(ElementUI);
 
@@ -14,5 +15,6 @@ new Vue({
   el: '#app',
   router,
   i18n,
+  store,
   render: h => h(App)
 });

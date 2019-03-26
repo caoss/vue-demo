@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Login from '@/pages/login'
 import Home from '@/pages/home'
+import Layout from '@/pages/layout/layout'
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export const constantRouterMap = [{
     {
         path:'/',
         name:'home',
-        component:Home,
+        component:Layout,
     }
     // {
     //     path: '/',
