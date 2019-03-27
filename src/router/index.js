@@ -28,6 +28,26 @@ export const constantRouterMap = [{
                 title: '首页'
             }
         }]
+    },
+    {
+        path: '/test',
+        hidden: true,
+        component: Layout,
+        children: [{
+            path: 'test1',
+            name: 'test1',
+            component: () => import('@/pages/test'),
+            meta: {
+                title: 'test1'
+            }
+        },{
+            path: 'test2',
+            name: 'test2',
+            component: () => import('@/pages/test2'),
+            meta: {
+                title: 'test2'
+            }
+        }]
     }
 ]
 
