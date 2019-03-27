@@ -1,5 +1,6 @@
 <template>
   <div class="main-app">
+      {{ a }}
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
