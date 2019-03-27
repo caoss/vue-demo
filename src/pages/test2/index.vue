@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="box animated flash">
-        test22
+        test22 
     </div>
   </div>
 </template>
@@ -9,6 +9,8 @@
 <script>
 export default {
   name: "test2",
+  methods: {
+  },
 };
 </script>
 
