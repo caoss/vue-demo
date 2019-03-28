@@ -2,6 +2,7 @@
   <div class="hello">
     <div class="box animated flash">
         test22 
+        {{ this.$store.state.test.count }}
     </div>
   </div>
 </template>

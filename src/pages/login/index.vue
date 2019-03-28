@@ -31,7 +31,9 @@
     </el-container>
 </template>
 
+
 <script>
+    // $t-- 国际化插件提供
     import {
         isValidUsername
     } from '@/utils/validate'
@@ -42,8 +44,9 @@
     import {
         mapActions
     } from 'vuex'
-    /* eslint-disable*/
+    /* eslint-disable 粒子插件*/
     import particles from 'particles.js'
+
     export default {
         data() {
             // username 验证
@@ -71,14 +74,6 @@
                 },
                 remember: false,
                 loading: false,
-
-
-                // rules: {
-                //     name: [
-                //         { required: true, message: '请输入活动名称', trigger: 'blur' },
-                //         { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-                //     ],
-                // }
 
                 rules: {
                     username: [{
@@ -123,9 +118,28 @@
             }
         },
         methods: {
+
+            // methods: {
+            //     ...mapActions([
+            //     'increment', 
+            //     // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+            //     // `mapActions` 也支持载荷：
+            //     'incrementBy'
+            //      // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+            //     ]),
+
+            //     ...mapActions({
+            //     add: 'increment'
+            //      // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
+            //     })
+
+            // }
+
+
             //在组件中分发 Action
             ...mapActions([
-                'login'
+                'login'//将this.login映射为 this.$store.dispatch('login')，触发store中actions-login方法
             ]),
             // 用户名输入框回车后切换到密码输入框
             goToPwdInput() {

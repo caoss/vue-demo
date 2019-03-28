@@ -9,6 +9,7 @@ import './icons';
 import i18n from './lang';
 import store from './store';
 import 'normalize.css/normalize.css';
+import './mock';
 
 Vue.use(ElementUI);
 

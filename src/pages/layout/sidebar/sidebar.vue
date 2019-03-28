@@ -27,6 +27,7 @@
       ...mapGetters([
         'routers'
       ])
+      
     },
     methods: {
       handleOpen(key, keyPath) {
