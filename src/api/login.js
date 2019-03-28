@@ -1,10 +1,11 @@
 // import axios from 'axios'
 import axios from '@/utils/http';
 
-const DOMAIN = 'http://121.40.29.234:9090/';
+import base from'./base';
+
+const DOMAIN = base.domain;
 
 export function login(userInfo) {
-    //   return axios.post(`/login/login`, userInfo)
     return axios.post(`${DOMAIN}login`, userInfo)
 }
 
