@@ -7,7 +7,7 @@
       <!-- 那么就将他的唯一子路由放到一级菜单来 -->
       <router-link v-if="hasOneShowingChildren(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChild) && !item.alwaysShow" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="item.path">
-          <item :icon="item.meta.icon" :title="item.meta.title"></item>
+          <item :icon="item.meta.icon" :title="item.meta.title" v-if ="item.meta"></item>
         </el-menu-item>
       </router-link>
 
@@ -16,13 +16,13 @@
           <item :icon="item.meta.icon" :title="item.meta.title"></item>
         </template>
 
-        <template v-for="child of item.children" v-if="!child.hidden">
+         <template v-for="child of item.children">
           <sidebar-item
             :item="child"
-            :key='child.meta.title'
+            :key='child'
             :base-path="resolvePath(child.path)"
             v-if="child.children && child.children.length>0" />
-            <router-link v-else :to="resolvePath(child.path)">
+            <router-link v-else :to="resolvePath(child.path)"  :key="child.meta.title">
                 <el-menu-item :index="child.path">
                     <item :icon="child.meta.icon" :title="child.meta.title"></item>
                 </el-menu-item>

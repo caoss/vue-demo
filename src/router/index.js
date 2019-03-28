@@ -110,9 +110,7 @@ export const constantRouterMap = [{
             path: 'home',
             name: 'home',
             component: () => import('@/pages/home'),
-            meta: {
-                title: '首页'
-            }
+            meta: {title: '首页'}
         }]
     },
 
