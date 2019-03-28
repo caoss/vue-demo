@@ -47,10 +47,9 @@ const user = {
         }, userInfo) {
             return new Promise((resolve, reject) => {
                 login(userInfo).then(resp => {
-                    console.log(resp);
                     let data = resp.data
-                    setToken(data.token)
-                    commit(SET_TOKEN, data.token)
+                    setToken(data.userName)
+                    commit(SET_TOKEN, data.userName)
                     // commit(SET_NAME, data.name)
                     // commit(SET_AGE, data.age)
                     // commit(SET_AVATAR, data.avatar)
