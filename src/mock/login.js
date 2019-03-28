@@ -1,13 +1,26 @@
 // import Mock from 'mockjs'
-import { userMap } from './user'
+import {
+    userMap
+} from './user'
 
 function login(userInfo) {
-  let { username } = JSON.parse(userInfo.body)
-  return userMap[username]
+    // console.log('userInfo',userInfo);
+    // userInfo{
+    //     body: "{"username":"admin","pwd":"123456"}"
+    //     type: "POST"
+    //     url: "/login/login"
+    // }
+    let {
+        username
+    } = JSON.parse(userInfo.body)
+    return userMap[username]
 }
 
 function logout() {
-  return 'success'
+    return 'success'
 }
 
-export { login, logout }
+export {
+    login,
+    logout
+}
