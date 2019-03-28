@@ -9,6 +9,9 @@ import './icons';
 import i18n from './lang';
 import store from './store';
 import 'normalize.css/normalize.css';
+// 全局权限检查
+import './permission'
+
 import './mock';
 
 Vue.use(ElementUI);

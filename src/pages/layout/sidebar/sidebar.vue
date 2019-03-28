@@ -26,9 +26,11 @@
     computed: {
       ...mapGetters([
         'routers'
-      ])
-      
+      ]),
     },
+     mounted() {//组件生命周期函数
+     console.log(this.routers);
+        },
     methods: {
       handleOpen(key, keyPath) {
         // console.log('handleOpen', key, keyPath)
