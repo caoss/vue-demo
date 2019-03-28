@@ -101,7 +101,8 @@
              // eg:请求超时或断网时，更新state的network状态
              // network状态在app.vue中控制着一个全局的断网提示组件的显示隐藏
              // 关于断网组件中的刷新重新获取数据，会在断网组件中说明
-             store.commit('changeNetwork', false);
+             tip('断网啦，请检查网络');
+            //  store.commit('changeNetwork', false);
          }
      });
  

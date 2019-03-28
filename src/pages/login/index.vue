@@ -8,14 +8,14 @@
                 <h2 class="login-title">{{$t('login.title')}}</h2>
             </div>
             <el-form :rules="rules" :model="loginForm" ref="loginForm" label-width="60px">
-                <el-form-item :label="$t('login.account')" prop="username" style="position:relative">
-                    <el-input type="text" v-model="loginForm.username" @keyup.enter.native="goToPwdInput"></el-input>
+                <el-form-item :label="$t('login.account')" prop="userName" style="position:relative">
+                    <el-input type="text" v-model="loginForm.userName" @keyup.enter.native="goToPwdInput"></el-input>
                     <span class="svg-container svg-container_user">
                 <icon-svg icon-class="user" />
               </span>
                 </el-form-item>
-                <el-form-item :label="$t('login.password')" prop="pwd">
-                    <el-input type="password" v-model="loginForm.pwd" @keyup.enter.native="onLogin" ref="pwd"></el-input>
+                <el-form-item :label="$t('login.password')" prop="password">
+                    <el-input type="password" v-model="loginForm.password" @keyup.enter.native="onLogin" ref="password"></el-input>
                     <span class="svg-container svg-container_password">
                 <icon-svg icon-class="password" />
               </span>
@@ -49,7 +49,7 @@
 
     export default {
         data() {
-            // username 验证
+            // userName 验证
             const validateUsername = (rule, value, callback) => {//elementUI- async-validator。验证规则
                 if (!isValidUsername(value)) {
                     callback(new Error('请输入正确的用户名'))
@@ -57,7 +57,7 @@
                     callback()
                 }
             }
-            // pwd 验证
+            // password 验证
             const validatePwd = (rule, value, callback) => {
                 if (value.length < 6) {
                     callback(new Error('密码不能小于6位'))
@@ -69,14 +69,14 @@
                 // 粒子开关
                 toggleParticles: false,
                 loginForm: {
-                    username: 'admin',
-                    pwd: '123456'
+                    userName: 'admin',
+                    password: '123456'
                 },
                 remember: false,
                 loading: false,
 
                 rules: {
-                    username: [{
+                    userName: [{
                             required: true,
                             message: '请输入账号',
                             trigger: 'blur',
@@ -88,7 +88,7 @@
                             validator: validateUsername
                         }
                     ],
-                    pwd: [{
+                    password: [{
                             required: true,
                             message: '请输入密码',
                             trigger: 'blur'
@@ -110,11 +110,11 @@
         created() {
             // 初始化时读取localStorage用户信息
             if (loadFromLocal('remember', false)) {
-                this.loginForm.username = loadFromLocal('username', '')
-                this.loginForm.pwd = loadFromLocal('password', '')
+                this.loginForm.userName = loadFromLocal('userName', '')
+                this.loginForm.password = loadFromLocal('password', '')
             } else {
-                this.loginForm.username = ''
-                this.loginForm.pwd = ''
+                this.loginForm.userName = ''
+                this.loginForm.password = ''
             }
         },
         methods: {
@@ -143,22 +143,22 @@
             ]),
             // 用户名输入框回车后切换到密码输入框
             goToPwdInput() {
-                this.$refs.pwd.$el.getElementsByTagName('input')[0].focus()
+                this.$refs.password.$el.getElementsByTagName('input')[0].focus()
             },
             // 登录操作
             onLogin() {
-                this.$refs.pwd.$el.getElementsByTagName('input')[0].blur()
+                this.$refs.password.$el.getElementsByTagName('input')[0].blur()
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
                         this.loading = true
                         this.login(this.loginForm).then((res) => {
                             // 保存账号
                             if (this.remember) {
-                                saveToLocal('username', this.loginForm.username)
-                                saveToLocal('password', this.loginForm.pwd)
+                                saveToLocal('userName', this.loginForm.userName)
+                                saveToLocal('password', this.loginForm.password)
                                 saveToLocal('remember', true)
                             } else {
-                                saveToLocal('username', '')
+                                saveToLocal('userName', '')
                                 saveToLocal('password', '')
                                 saveToLocal('remember', false)
                             }
@@ -166,6 +166,7 @@
                                 path: '/'
                             })
                         }).catch((err) => {
+                             console.log('err',err);
                             this.loading = false
                         })
                     } else {
