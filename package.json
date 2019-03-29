@@ -42,7 +42,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+        "indent": [2, 4]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
