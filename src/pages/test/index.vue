@@ -1,13 +1,16 @@
   <template>
-  <el-table :data="tableData" style="width: 100%">
-    <el-table-column prop="date" label="日期" width="180"></el-table-column>
-    <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-    <el-table-column prop="address" label="地址"></el-table-column>
-  </el-table>
+  <div>
+    <span>{{name}}</span>
+    <el-table :data="list" style="width: 100%">
+      <el-table-column prop="sortNo" label="排序"></el-table-column>
+      <el-table-column prop="pname" label="pname" width="180"></el-table-column>
+      <el-table-column prop="pcode" label="pcode" width="180"></el-table-column>
+    </el-table>
+  </div>
 </template>
 
   <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "test",
   data() {
@@ -38,6 +41,12 @@ export default {
   },
   created() {
     this.getData();
+  },
+  computed: {
+    ...mapGetters(["list", "name"])
+  },
+  mounted() {
+    console.log("list", this.list);
   },
   methods: {
     //在组件中分发 Action

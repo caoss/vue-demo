@@ -6,11 +6,11 @@ const GET_LIST = 'GET_LIST'
 
 const list = {
     state: {
-        list: []
+        resp: {},
     },
     mutations: {
-        [GET_LIST](list) {
-            state.list = list
+        [GET_LIST](state,resp) {
+            state.resp = resp
         },
     },
     actions: {
@@ -20,6 +20,7 @@ const list = {
         }, params) {
             return new Promise((resolve, reject) => {
                 getList(params).then(resp => {
+                    console.log('resp',resp);
                     commit(GET_LIST, resp)
                     return resolve()
                 }).catch(err => {
@@ -30,6 +31,7 @@ const list = {
         
     },
     getters: {
+        list: state => state.resp.data && state.resp.data.list?state.resp.data.list:[],
         // token: state => state.token,
         // name: state => state.name,
         // age: state => state.age,

@@ -86,48 +86,53 @@ export const constantRouterMap = [{
         }
     },
     {
-        path: '/introduction',
-        component: Layout,
-        redirect: '/introduction/index',
-        meta: {//控制在左栏显示
-          icon: 'question',
-          title: '简述'
-        },
-        children: [
-          {
-            path: 'index',
-            name: 'Introduction',
-            component: () => import('@/pages/test2/index'),
-            meta: {icon: 'warning', title: '简述'}
-          }
-        ]
-      },
-    {
         path: '/test',
         component: Layout,
         redirect: '/test/test1',
-        meta: {//控制在左栏显示
-          icon: 'question',
-          title: '测试一'
+        meta: { //控制在左栏显示
+            icon: 'question',
+            title: '测试一'
         },
-        children: [
-          {
+        children: [{
             path: 'test1',
             name: 'Introduction',
             component: () => import('@/pages/test/index'),
-            meta: {icon: 'warning', title: '测试一'}
-          }
-        ]
-      },
+            meta: {
+                icon: 'warning',
+                title: '测试一'
+            }
+        }]
+    },
+    {
+        path: '/introduction',
+        component: Layout,
+        redirect: '/introduction/index',
+        meta: { //控制在左栏显示
+            icon: 'question',
+            title: '简述'
+        },
+        children: [{
+            path: 'index',
+            name: 'Introduction',
+            component: () => import('@/pages/test2/index'),
+            meta: {
+                icon: 'warning',
+                title: '简述'
+            }
+        }]
+    },
     {
         path: '/',
         component: Layout,
         redirect: '/home',
+        hidden: true,
         children: [{
             path: 'home',
             name: 'home',
             component: () => import('@/pages/home'),
-            meta: {title: '首页'}
+            meta: {
+                title: '首页'
+            }
         }]
     },
 
