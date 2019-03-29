@@ -103,6 +103,23 @@ export const constantRouterMap = [{
         ]
       },
     {
+        path: '/test',
+        component: Layout,
+        redirect: '/test/test1',
+        meta: {//控制在左栏显示
+          icon: 'question',
+          title: '测试一'
+        },
+        children: [
+          {
+            path: 'test1',
+            name: 'Introduction',
+            component: () => import('@/pages/test/index'),
+            meta: {icon: 'warning', title: '测试一'}
+          }
+        ]
+      },
+    {
         path: '/',
         component: Layout,
         redirect: '/home',

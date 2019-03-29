@@ -20,16 +20,14 @@ const list = {
         }, params) {
             return new Promise((resolve, reject) => {
                 getList(params).then(resp => {
-                    console.log(resp);
-                    // return;
-                    // commit(GET_LIST, resp)
+                    commit(GET_LIST, resp)
                     return resolve()
                 }).catch(err => {
                     return reject(err)
                 })
             })
         },
-      
+        
     },
     getters: {
         // token: state => state.token,
