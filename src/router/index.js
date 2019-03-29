@@ -95,7 +95,7 @@ export const constantRouterMap = [{
         },
         children: [{
             path: 'test1',
-            name: 'Introduction',
+            name: 'test1',// 如果name设置相同会出现，刷新当前页面跳转到别的路由的情况
             component: () => import('@/pages/test/index'),
             meta: {
                 icon: 'warning',
