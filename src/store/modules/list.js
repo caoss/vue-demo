@@ -5,6 +5,7 @@ import {
 const GET_LIST = 'GET_LIST'
 
 const list = {
+    namespaced: true,
     state: {
         resp: {},
     },

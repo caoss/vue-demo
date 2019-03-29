@@ -8,6 +8,7 @@ import {
     setToken,
     removeToken
 } from '@/common/auth'
+import { stat } from 'fs';
 
 const SET_TOKEN = 'SET_TOKEN'
 const SET_NAME = 'SET_NAME'
@@ -21,7 +22,8 @@ const user = {
         name: '',
         age: 0,
         avatar: '',
-        permissions: ''
+        permissions: '',
+        list:[1,2,3]
     },
     mutations: {
         [SET_TOKEN](state, token) {
@@ -95,6 +97,7 @@ const user = {
     },
     getters: {
         token: state => state.token,
+        list: state =>state.list,
         name: state => state.name,
         age: state => state.age,
         avatar: state => state.avatar,
