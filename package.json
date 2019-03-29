@@ -43,7 +43,6 @@
       "eslint:recommended"
     ],
     "rules": {
-        "indent": [2, 4]
     },
     "parserOptions": {
       "parser": "babel-eslint"
