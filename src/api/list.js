@@ -6,5 +6,6 @@ import base from'./base';
 const DOMAIN = base.domain;
 
 export function getList(params) {
-    return axios.get(`${DOMAIN}parameters`,params)
+    console.log('params---',params);
+    return axios.get(`${DOMAIN}parameters`,{ params })
 }

@@ -29,10 +29,10 @@ const list = {
                 })
             })
         },
-        
     },
     getters: {
         list: state => state.resp.data && state.resp.data.list?state.resp.data.list:[],
+        total: state => state.resp.data && state.resp.data.total?state.resp.data.total:0,
         // token: state => state.token,
         // name: state => state.name,
         // age: state => state.age,
