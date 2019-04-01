@@ -166,7 +166,6 @@
                                 path: '/'
                             })
                         }).catch((err) => {
-                             console.log('err',err);
                             this.loading = false
                         })
                     } else {

@@ -65,7 +65,7 @@ export default {
           location.reload(); // 为了重新实例化vue-router对象 避免bug
         })
         .catch(err => {
-          console.log(err);
+        //   console.log(err);
         });
     }
   }
