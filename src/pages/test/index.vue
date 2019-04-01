@@ -46,7 +46,7 @@
         class="demo-ruleForm"
       >
         <el-form-item label="序号" prop="sortNo">
-          <el-input v-model.number="ruleForm2.sortNo"></el-input>
+          <el-input type='number' v-model.number="ruleForm2.sortNo"></el-input>
         </el-form-item>
         <el-form-item label="名称" prop="paramName">
           <el-input v-model="ruleForm2.paramName" autocomplete="off"></el-input>
@@ -178,10 +178,6 @@ export default {
             }
         });
     },
-    resetForm(formName) {
-        this.$refs[formName].resetFields();
-        // this.resetForm();
-    },
     getPageNo(pageNo) {
       this.pageNo = pageNo;
       this.getData();
@@ -195,6 +191,7 @@ export default {
         // rows.splice(index, 1);
     },
     resetForm(){
+        this.$refs['ruleForm2'].resetFields();
         this.ruleForm2.paramCode = '';
         this.ruleForm2.paramName = '';
         this.ruleForm2.sortNo = '';
