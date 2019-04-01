@@ -8,7 +8,7 @@
       <screenfull class="screenfull right-menu-item"></screenfull>
     </el-tooltip>
 
-    <lang-select class="right-menu-item"></lang-select>
+    <!-- <lang-select class="right-menu-item"></lang-select> -->
 
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">

@@ -70,7 +70,6 @@
 
   <script>
 import { mapActions, mapGetters } from "vuex";
-import { setTimeout } from 'timers';
 export default {
   name: "test",
   data() {
@@ -116,7 +115,6 @@ export default {
   },
 
   mounted() {
-    console.log("list----", this.total);
   },
 
   methods: {
@@ -149,7 +147,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-            console.log(this[formName]);
             this.addOneList( this[formName] ).then(res=>{
                 this.$message({
                         message: res,
@@ -161,7 +158,6 @@ export default {
                 this.$refs['ruleForm2'].resetFields();
             });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -179,7 +175,6 @@ export default {
                     this.$refs['ruleForm2'].resetFields();
                 });
             } else {
-            console.log("error submit!!");
             return false;
             }
         });

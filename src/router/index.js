@@ -101,6 +101,14 @@ export const constantRouterMap = [{
                 icon: 'warning',
                 title: '测试一'
             }
+        },{
+            path: 'test2',
+            name: 'test2',// 如果name设置相同会出现，刷新当前页面跳转到别的路由的情况
+            component: () => import('@/pages/test2/index'),
+            meta: {
+                icon: 'warning',
+                title: '测试二'
+            }
         }]
     },
     {
