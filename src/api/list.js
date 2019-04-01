@@ -6,6 +6,11 @@ import base from'./base';
 const DOMAIN = base.domain;
 
 export function getList(params) {
-    console.log('params---',params);
     return axios.get(`${DOMAIN}parameters`,{ params })
+}
+export function addOneList(params) {
+    return axios.post(`${DOMAIN}parameters`,params);
+}
+export function editOneList( params) {
+    return axios.put(`${DOMAIN}parameters/${params.id}`,params);
 }

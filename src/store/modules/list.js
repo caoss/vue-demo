@@ -1,8 +1,11 @@
 import {
-    getList
+    getList,
+    addOneList,
+    editOneList
 } from '@/api/list'
 
 const GET_LIST = 'GET_LIST'
+const EDIT_SUCCESS = 'EDIT_SUCCESS'
 
 const list = {
     namespaced: true,
@@ -13,6 +16,15 @@ const list = {
         [GET_LIST](state,resp) {
             state.resp = resp
         },
+        [EDIT_SUCCESS](state,res) {
+            state.resp.data.list.map((item)=>{
+                if( item.id == res.id ){
+                    item.pcode = res.paramCode
+                    item.pname = res.paramName
+                    item.sortNo = res.sortNo
+                }
+            })
+        },
     },
     actions: {
         // 用户登录
@@ -21,7 +33,6 @@ const list = {
         }, params) {
             return new Promise((resolve, reject) => {
                 getList(params).then(resp => {
-                    console.log('resp',resp);
                     commit(GET_LIST, resp)
                     return resolve()
                 }).catch(err => {
@@ -29,15 +40,25 @@ const list = {
                 })
             })
         },
+        addOneList({},params){
+            return new Promise((resolve)=>{
+                addOneList(params).then(resp=>{
+                    return resolve(resp.data&&resp.data.message?resp.data.message:'操作成功')
+                })
+            })
+        },
+        editOneList({commit},params){
+            return new Promise((resolve)=>{
+                editOneList(params).then(resp=>{
+                    commit(EDIT_SUCCESS,params);
+                    return resolve(resp.data&&resp.data.message?resp.data.message:'操作成功')
+                })
+            })
+        },
     },
     getters: {
         list: state => state.resp.data && state.resp.data.list?state.resp.data.list:[],
         total: state => state.resp.data && state.resp.data.total?state.resp.data.total:0,
-        // token: state => state.token,
-        // name: state => state.name,
-        // age: state => state.age,
-        // avatar: state => state.avatar,
-        // permissions: state => state.permissions
     }
 }
 
