@@ -1,7 +1,8 @@
 import {
     getList,
     addOneList,
-    editOneList
+    editOneList,
+    delOne
 } from '@/api/list'
 
 const GET_LIST = 'GET_LIST'
@@ -55,6 +56,14 @@ const list = {
                 })
             })
         },
+        delOne({},params){
+            return new Promise((resolve)=>{
+                delOne(params).then(resp=>{
+                    return resolve(resp.data&&resp.data.message?resp.data.message:'操作成功')
+                })
+            })
+        },
+
     },
     getters: {
         list: state => state.resp.data && state.resp.data.list?state.resp.data.list:[],

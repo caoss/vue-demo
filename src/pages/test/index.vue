@@ -11,7 +11,7 @@
       <el-table-column fixed="right" label="操作" width="120">
         <template slot-scope="scope">
           <el-button
-            @click.native.prevent="deleteRow(scope.row.id, lists)"
+            @click.native.prevent="deleteRow(scope.$index,scope.row.id,lists)"
             type="text"
             size="small"
           >移除</el-button>
@@ -130,7 +130,8 @@ export default {
       {
         getList: "getList",
         addOneList:'addOneList',
-        editOneList:'editOneList'
+        editOneList:'editOneList',
+        delOne:'delOne'
       }
     ),
     // 登录操作
@@ -150,7 +151,10 @@ export default {
         if (valid) {
             console.log(this[formName]);
             this.addOneList( this[formName] ).then(res=>{
-                this.$message(res);
+                this.$message({
+                        message: res,
+                        type: 'success'
+                    });
                 this.dialogVisible = false;
                 this.pageNo = 1;
                 this.getData();
@@ -165,10 +169,12 @@ export default {
     submitEidtForm(formName){
         this.$refs[formName].validate(valid => {
             if (valid) {
-                console.log('-----------------------',this[formName]);
                 this[formName].id = this.targetId;
                 this.editOneList( this[formName]  ).then(res=>{
-                    this.$message(res);
+                   this.$message({
+                        message: res,
+                        type: 'success'
+                    });
                     this.dialogVisible = false;
                     this.$refs['ruleForm2'].resetFields();
                 });
@@ -186,9 +192,21 @@ export default {
       this.pageSize = pageSize;
       this.getData();
     },
-    deleteRow(index, rows) {
-        console.log(index);
-        // rows.splice(index, 1);
+    deleteRow(index, id,rows) {
+        this.$confirm('确定要删除吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.delOne(id).then(res=>{
+                    this.$message({
+                        message: res,
+                        type: 'success'
+                    });
+                    rows.splice(index, 1);
+                });
+        })
+       
     },
     resetForm(){
         this.$refs['ruleForm2'].resetFields();

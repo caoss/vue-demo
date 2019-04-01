@@ -14,3 +14,6 @@ export function addOneList(params) {
 export function editOneList( params) {
     return axios.put(`${DOMAIN}parameters/${params.id}`,params);
 }
+export function delOne( params) {
+    return axios.delete(`${DOMAIN}parameters/${params}`);
+}
