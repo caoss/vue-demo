@@ -65,6 +65,7 @@ import Router from 'vue-router'
 
 import Login from '@/pages/login'
 import Layout from '@/pages/layout/layout'
+import pc_layout from '@/pages/pc_layout/layout'
 
 Vue.use(Router)
 
@@ -140,6 +141,26 @@ export const constantRouterMap = [{
             component: () => import('@/pages/home'),
             meta: {
                 title: '首页'
+            }
+        }]
+    },
+    {
+        path: '/pc',
+        component: pc_layout,
+        hidden: true,
+        children: [{
+            path: 'pc',
+            name: 'pc',
+            component: () => import('@/pages/pc_layout'),
+            meta: {
+                title: '首页2'
+            }
+        },{
+            path: 'pc2',
+            name: 'pc2',
+            component: () => import('@/pages/pc_layout/index2'),
+            meta: {
+                title: '首页2'
             }
         }]
     },

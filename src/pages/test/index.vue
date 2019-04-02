@@ -68,155 +68,155 @@
   </div>
 </template>
 
-  <script>
+<script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  name: "test",
-  data() {
-    var checkSortNo = (rule, value, callback) => {
-      if (value - 0) {
-        callback();
-      } else if (value == "0") {
-        return callback(new Error("序号必须大于0"));
-      } else {
-        return callback(new Error("序号只能为数字"));
-      }
-    };
-    return {
-      pageNo: 1,
-      pageSize: 10,
-      dialogVisible: false,
-      isEdit:false,
-      targetId:'',
-      ruleForm2: {
-        paramCode: "",
-        paramName: "",
-        sortNo: ""
-      },
-      rules2: {
-        sortNo: [{ validator: checkSortNo, trigger: "blur" }],
-      }
-    };
-  },
-  created() {
-    this.getData();
-  },
-
-  computed: {
-    ...mapGetters(
-      //带有命名空间的写法
-      "list",
-      {
-        lists: "list",
-        total: "total"
-      }
-    )
-    // ...mapGetters(["name"])
-  },
-
-  mounted() {
-  },
-
-  methods: {
-    //在组件中分发 Action
-    // ...mapActions([
-    //   "getList" //将this.login映射为 this.$store.dispatch('login')，触发store中actions-login方法
-    // ]),
-    ...mapActions(
-      //带有命名空间的写法、namespace:true
-      "list",
-      {
-        getList: "getList",
-        addOneList:'addOneList',
-        editOneList:'editOneList',
-        delOne:'delOne'
-      }
-    ),
-    // 登录操作
-    getData() {
-      this.getList({ pageNo: this.pageNo, pageSize: this.pageSize });
-    },
-    handleClose(done){
-       this.resetForm('ruleForm2');
-        done();
-    },
-    _cancle(){
-        this.resetForm('ruleForm2');
-        this.dialogVisible = false;
-    },
-    submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-            this.addOneList( this[formName] ).then(res=>{
-                this.$message({
-                        message: res,
-                        type: 'success'
-                    });
-                this.dialogVisible = false;
-                this.pageNo = 1;
-                this.getData();
-                this.$refs['ruleForm2'].resetFields();
-            });
+    name: "test",
+    data() {
+        var checkSortNo = (rule, value, callback) => {
+        if (value - 0) {
+            callback();
+        } else if (value == "0") {
+            return callback(new Error("序号必须大于0"));
         } else {
-          return false;
+            return callback(new Error("序号只能为数字"));
         }
-      });
+        };
+        return {
+            pageNo: 1,
+            pageSize: 10,
+            dialogVisible: false,
+            isEdit:false,
+            targetId:'',
+            ruleForm2: {
+                paramCode: "",
+                paramName: "",
+                sortNo: ""
+            },
+            rules2: {
+                sortNo: [{ validator: checkSortNo, trigger: "blur" }],
+            }
+        };
     },
-    submitEidtForm(formName){
+    created() {
+        this.getData();
+    },
+
+    computed: {
+        ...mapGetters(
+        //带有命名空间的写法
+        "list",
+        {
+            lists: "list",
+            total: "total"
+        }
+        )
+        // ...mapGetters(["name"])
+    },
+
+    mounted() {
+    },
+
+    methods: {
+        //在组件中分发 Action
+        // ...mapActions([
+        //   "getList" //将this.login映射为 this.$store.dispatch('login')，触发store中actions-login方法
+        // ]),
+        ...mapActions(
+        //带有命名空间的写法、namespace:true
+        "list",
+        {
+            getList: "getList",
+            addOneList:'addOneList',
+            editOneList:'editOneList',
+            delOne:'delOne'
+        }
+        ),
+        // 登录操作
+        getData() {
+        this.getList({ pageNo: this.pageNo, pageSize: this.pageSize });
+        },
+        handleClose(done){
+        this.resetForm('ruleForm2');
+            done();
+        },
+        _cancle(){
+            this.resetForm('ruleForm2');
+            this.dialogVisible = false;
+        },
+        submitForm(formName) {
         this.$refs[formName].validate(valid => {
             if (valid) {
-                this[formName].id = this.targetId;
-                this.editOneList( this[formName]  ).then(res=>{
-                   this.$message({
-                        message: res,
-                        type: 'success'
-                    });
+                this.addOneList( this[formName] ).then(res=>{
+                    this.$message({
+                            message: res,
+                            type: 'success'
+                        });
                     this.dialogVisible = false;
+                    this.pageNo = 1;
+                    this.getData();
                     this.$refs['ruleForm2'].resetFields();
                 });
             } else {
             return false;
             }
         });
-    },
-    getPageNo(pageNo) {
-      this.pageNo = pageNo;
-      this.getData();
-    },
-    handleSizeChange(pageSize) {
-      this.pageSize = pageSize;
-      this.getData();
-    },
-    deleteRow(index, id,rows) {
-        this.$confirm('确定要删除吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.delOne(id).then(res=>{
+        },
+        submitEidtForm(formName){
+            this.$refs[formName].validate(valid => {
+                if (valid) {
+                    this[formName].id = this.targetId;
+                    this.editOneList( this[formName]  ).then(res=>{
+                    this.$message({
+                            message: res,
+                            type: 'success'
+                        });
+                        this.dialogVisible = false;
+                        this.$refs['ruleForm2'].resetFields();
+                    });
+                } else {
+                return false;
+                }
+            });
+        },
+        getPageNo(pageNo) {
+        this.pageNo = pageNo;
+        this.getData();
+        },
+        handleSizeChange(pageSize) {
+        this.pageSize = pageSize;
+        this.getData();
+        },
+        deleteRow(index, id,rows) {
+            this.$confirm('确定要删除吗?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+            }).then(() => {
+                this.delOne(id).then(res=>{
                     this.$message({
                         message: res,
                         type: 'success'
                     });
                     rows.splice(index, 1);
                 });
-        })
-       
-    },
-    resetForm(){
-        this.$refs['ruleForm2'].resetFields();
-        this.ruleForm2.paramCode = '';
-        this.ruleForm2.paramName = '';
-        this.ruleForm2.sortNo = '';
-    },
-    editRow(row){
-        this.dialogVisible = true;
-        this.ruleForm2.paramCode = row.pcode;
-        this.ruleForm2.paramName = row.pname;
-        this.ruleForm2.sortNo = row.sortNo;
-        this.targetId = row.id;
-        this.isEdit = true;
+            })
+        
+        },
+        resetForm(){
+            this.$refs['ruleForm2'].resetFields();
+            this.ruleForm2.paramCode = '';
+            this.ruleForm2.paramName = '';
+            this.ruleForm2.sortNo = '';
+        },
+        editRow(row){
+            this.dialogVisible = true;
+            this.ruleForm2.paramCode = row.pcode;
+            this.ruleForm2.paramName = row.pname;
+            this.ruleForm2.sortNo = row.sortNo;
+            this.targetId = row.id;
+            this.isEdit = true;
+        }
     }
-  }
 };
 </script>
