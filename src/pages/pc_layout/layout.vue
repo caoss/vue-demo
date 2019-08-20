@@ -1,7 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <header2></header2>
-    <div class="main-container">
+    <header2  :title="title" ></header2>
+    1211323233113{{title}}
+    <div class="main-container"  @click="doSomething" >
       <main2></main2>
     </div>
     <footer2></footer2>
@@ -16,6 +17,20 @@ export default {
       header2,
       footer2,
       main2
+  },
+   data() {
+    return {
+        title:{
+            header:'headerrrrrr'
+        }
+    };
+  },
+  methods:{
+      doSomething:function(){
+          this.title = {
+            header:'headerrrrrr222'
+        };
+      }
   }
 };
 </script>

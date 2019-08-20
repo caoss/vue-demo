@@ -1,6 +1,6 @@
 <template>
   <div class="header_app">
-    {{name}}
+    {{title.header}}
     <router-link class="nav" :to="{ name: 'pc2' }">pc</router-link>
     <router-link class="nav" style="margin-left:30px" :to="{ name: 'pc' }">pc</router-link>
   </div>
@@ -14,6 +14,7 @@ export default {
         name:'header'
     };
   },
+  props:['title'],
   beforeCreate(){
 
   },
